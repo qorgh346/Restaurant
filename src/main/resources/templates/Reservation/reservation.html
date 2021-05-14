@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    현재 로그인한 고객 : <h1 th:text="${Member}"></h1>
+    현재 날짜와 시간 : <h1 th:text="${Date}"></h1> -  <h1 th:text="${Time}"></h1>
+    <table>
+        <thead>
+            <tr>테이블정보</tr>
+        </thead>
+        <tbody>
+            <tr th:each="table: ${tableList}">
+                <td th:text="${table.tableNumber}">테이블번호</td>
+                <td th:text="${table.maxNumber}">테이블이용번호</td>
+                <td th:text="${table.Available}">테이블이용가능?</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form action="/booking/bookingForm" method="POST">
+        예약하실 테이블 번호 : 
+        <input type="text" name="TableNumber">
+      
+        예약하실 날짜:
+        <input type="date" name="date" value="2021-05-08" >
+        
+        예약하실 시간:
+        <input type="time" name="startTime" value="13:10" min="11:00" max="20:00" >
+            ~
+        <input type="time" name="endTime" value="13:10" min="11:00" max="20:00" > 
+
+        총 몇 명 예약할건데?
+        <input type="text" name="howMany">
+        <button type="submit">버튼</button>
+    </form>
+            
+</body>
+</html>

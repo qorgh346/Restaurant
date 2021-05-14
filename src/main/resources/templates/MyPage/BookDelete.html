@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <style>
+        body {
+    margin: 0px; 
+    font-size: 18px;
+    color: #FFF;
+}
+#box {
+    position: relative;
+    height: auto;
+    margin: auto; 
+    background-color: #F90;
+}
+#top {
+    background-color: #333;
+    height: 100px;
+    position: relative;
+}
+.MyInfo{
+    position: fixed;
+    right: 0;
+    top: 0;
+    
+}
+li a{
+    text-decoration: none;
+    color: black;
+}
+li{
+    text-align: center;
+    padding: 20px;
+    list-style: none;
+    border: 2px solid black;
+}
+#left {
+    background-color: #09C;
+    float: left;
+    height: 500px;
+    width: 15%;
+    position: relative;
+}
+#main {
+    background-color: #3C0;
+    float: left;
+    height: 500px;
+    width: 85%;
+    position: relative;
+}
+#bottom {
+    background-color: #C0F;
+    height: 70px;
+    position: relative;
+    clear: both; 
+    float: left; 
+}
+
+    </style>
+</head>
+<body>
+
+        <div id="box">
+    
+            <div id="top">
+                <div class="logo">LOGO</div>
+                <div class="MyInfo"><p th:text="${MyMember}">님</p></div>
+            </div>
+
+            <div id="left">
+                <ol>
+                    <li><a href="/BookingFind">예약조회</a></li>
+                    <li><a href="/BookingUpdate">예약변경</a></li>
+                    <li><a href="/BookingDelete">예약취소</a></li>
+                </ol>
+
+            </div>
+    
+            <div id="main">
+                <p>고객님의 예약정보</p> 
+                <span th:text="${MemberBooking.Date}" ></span>
+                <span th:text="${MemberBooking.startTime}"></span> ~ <span  th:text="${MemberBooking.endTime}"></span>
+                <span th:text="${MemberBooking.tableNumber}"></span> 번 테이블 ->
+                <span th:text="${MemberBooking.howMany}"></span>명
+                <form action="/My_delete" method="POST">
+                    <input type="submit" value="취소">
+                </form>
+                
+            </div>
+    
+            <div id="bottom" >bottom</div>
+    
+        </div>
+    
+            
+</body>
+</html>
